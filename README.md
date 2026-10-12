@@ -5,9 +5,9 @@ An experimental, motion-first Durga Puja web experience. Built as a small digita
 ## Direction
 
 - **Visual language:** night-time Kolkata, clay, sindoor, lamp light, oxidized gold, deep wine and ink.
-- **Experience arc:** Arrival → Mahalaya → five festival acts → sound archive → afterglow.
-- **Interactions:** pointer-parallax goddess mark, chapter rail, ritual cards, browser-generated sound pulse, and a “leave a light” wish ritual.
-- **Audio:** the sound console intentionally uses browser-generated tones rather than shipping copyrighted recordings. The labels reference the old/new sonic traditions that inspired the interface.
+- **Experience arc:** a loading gate → camera travel through five festival scenes → river return.
+- **Interactions:** scroll-driven camera travel, pointer-driven orbit control, live chapter HUD, ambient particle field, 3D pandal frames, goddess geometry, river wireframe, and an enter-to-start audio narrative.
+- **Audio:** there is no visible music player. The opening gesture starts local chapter audio when files are added; until then, a quiet Web Audio tonal bed keeps the prototype alive. See `public/audio/README.md`.
 
 ## Run locally
 
@@ -21,6 +21,18 @@ Build for production:
 ```bash
 npm run build
 ```
+
+## Experience architecture
+
+The new interaction model takes the structural cue from [Edolus](https://edolus.com/): the screen is a fullscreen world, not a collection of web sections. A fixed Three.js stage is driven by a 650vh scroll track. As the visitor moves, the camera, fog, particle fields, ritual geometry and chapter copy move together like a short interactive film.
+
+The five scenes are:
+
+1. **Mahalaya / The Calling** — particles, first light, the pre-dawn eye-opening.
+2. **Shasthi / The Arrival** — concentric pandal frames and a forward camera push.
+3. **Ashtami / The Darshan** — the abstract goddess figure comes close and looks back.
+4. **Navami / The Pulse** — faster particle rhythm and a warmer, denser scene.
+5. **Dashami / The Return** — the goddess recedes into a wireframe river of floating lamps.
 
 ## Research notes
 

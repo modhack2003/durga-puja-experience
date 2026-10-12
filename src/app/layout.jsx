@@ -2,7 +2,7 @@ import './globals.css'
 
 export const metadata = {
   title: 'The Goddess Returns — An immersive Durga Puja journey',
-  description: 'From the first brushstroke to the river. Travel through five worlds of Durga Puja in an interactive celebration of art, community and homecoming.',
+  description: 'Welcome Uma and her children home. From Mahalaya’s Mahishasura Mardini to Saptami and Bijoya Dashami, explore six chapters of Bengali devotion, ritual and homecoming.',
 }
 
 export default function RootLayout({ children }) {

@@ -21,3 +21,21 @@ Sources informing chapter context:
 - Clay, craftsmanship and homecoming: https://ich.unesco.org/en/RL/durga-puja-in-kolkata-00703
 
 The in-app Story & Rituals panels link directly to their relevant sources. Ritual timing follows lunar tithis, and practice varies between communities; chapter scenes are artistic interpretations rather than instructions for conducting puja.
+
+## River and dhaki environment revision
+
+Two additional original assets were made with the built-in image-generation tool and optimized to WebP:
+
+- **Hooghly ghat** (`hooghly-ghat.webp`): a wide photorealistic Kolkata river scene at warm dusk, grey-brown water with irregular small ripples, weathered stone steps, small spectators in ordinary Bengali clothes, wooden boats, a distant riverfront and subtle bridge silhouette. Open water leaves room for the story. No additional idol is painted into the backdrop. The image is an imagined environment, not a photograph of a specific ghat.
+- **Dhaki musicians** (`dhaki-musicians.webp`): three full-body Bengali musicians, natural human proportions, cotton dhotis and kurtas, red-and-white gamchas, barefoot stances, shoulder-supported barrel dhaks with rope lacing and feather decoration, and two slender sticks. Warm pandal lighting, transparent background, no deity or scenery in the performer layer.
+
+The river backdrop has a localized water shimmer; the sky, boats and spectators within that artwork stay stable. Additional small 3D attendants support the pratima's wooden-and-bamboo carrying frame, with waterline clipping, while 3D ferries gently rock. Navami includes the photographic-style musician layer, two small animated 3D drummers, spectators, marigold garlands, columns, lamps and an original chalk-like floor pattern. Reduced-motion preference stops river shimmer, rocking, gestures and performer movement.
+
+Visual references reviewed (used for research, not copied into the website):
+
+- Immersion photojournalism: https://www.outlookindia.com/national/in-photos-the-spirit-of-durga-puja-captured-in-the-immersion-ceremony
+- Bengali immersion gallery: https://www.anandabazar.com/amp/west-bengal/durga-puja-2022-idol-immersion-begins-as-durga-puja-comes-to-an-end-dgtl-photogallery/cid/1374827
+- Photographer's Baja Kadamtala image: https://commons.wikimedia.org/wiki/File:Durga_Idol_Immersion_-_Baja_Kadamtala_Ghat_-_Kolkata_2012-10-24_1472.JPG
+- Sovabazar's boat-based immersion arrangements: https://commons.wikimedia.org/wiki/File:Sovabazar_Royal_Durga_Idol_Immersion_Arrangement_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9211.jpg
+- Dhakis and their instruments, a photographic account: https://lifeisavacation.in/2013/10/23/dhaki-bengal-durga-puja/
+- Bengali pandal and drummer coverage: https://www.anandabazar.com/ananda-utsav/puja-parikrama/durga-puja-2022-ballygunge-cultural-association-celebrates-durga-pujo-dgtl/cid/1374513

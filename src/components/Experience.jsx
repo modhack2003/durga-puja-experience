@@ -128,7 +128,7 @@ export default function Experience() {
     </header>
 
     <AnimatePresence>
-      {!entered && <motion.section className="intro" exit={{ opacity: 0, filter: reduced ? 'none' : 'blur(12px)' }} transition={{ duration: reduced ? 0 : 0.9 }} aria-label="Enter the experience">
+      {!entered && <motion.section className="intro" exit={{ opacity: 0, filter: reduced ? 'none' : 'blur(12px)', pointerEvents: 'none' }} transition={{ duration: reduced ? 0 : 0.9 }} aria-label="Enter the experience">
         <div className="intro-eyebrow"><span /> AN IMMERSIVE HOMECOMING <span /></div>
         <h1><span>THE GODDESS</span><span>RETURNS.</span></h1>
         <p>UMA COMES HOME WITH HER CHILDREN.<br className="mobile-only" /> SIX CHAPTERS. ONE CITY. A THOUSAND STORIES.</p>

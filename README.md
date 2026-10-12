@@ -26,8 +26,8 @@ The generated `out/` directory can be served by any static host. `next start` is
 - **Shashti:** a layered illuminated pandal corridor with a forward camera journey.
 - **Saptami:** Nabapatrika snan, with nine plant forms and the red-bordered white sari at the riverbank.
 - **Ashtami:** the complete Bengali family pratima, lamp offerings and anjali context.
-- **Navami:** a circle of dhak drums and warm particles.
-- **Dashami:** animated river reflections, floating lamps and a receding idol.
+- **Navami:** three lifelike dhakis performing before the family altar, small animated drummers and spectators, marigold garlands and a decorated floor.
+- **Dashami:** a photorealistic Hooghly-inspired river ghat, subtle moving ripples, boats, ghat spectators and small attendants carrying the pratima on a supported platform.
 
 The fullscreen entry, restrained typography, scene overlays and scroll choreography take inspiration from [Edolus](https://edolus.com/). The devotional artwork, geometry, narrative, palette and synthesized sound in this project are original; no Edolus assets or source code are included. Ma and her children are shown in original devotional artwork inside the 3D worlds. The old geometric figure has been removed; the artwork preserves a traditional Bengali painted-pratima appearance and is not a volumetric scan. See `public/art/README.md` for the art briefs and cultural sources.
 
@@ -44,7 +44,7 @@ The fullscreen entry, restrained typography, scene overlays and scroll choreogra
 | Motion | Entry, chapter and navigation transitions |
 | Lucide React | Accessible interface icons |
 
-The heavier 3D component is dynamically loaded. Only the current and next worlds are rendered. Mobile devices use reduced resolution and skip postprocessing. Reduced-motion visitors get camera cuts, no parallax or particle movement, and immediate interface transitions. An explicit **Explore without 3D** option, automatic WebGL fallback, keyboard controls, focus-trapped chapter menu, sound toggle, and no-JavaScript chapter text keep the story accessible.
+The heavier 3D component is dynamically loaded. Original generated WebP environment and musician artwork adds photographic detail; custom shaders animate the water, and small 3D people and boats provide scale and motion. Only the current and next worlds are rendered. Mobile devices use reduced resolution and skip postprocessing. Reduced-motion visitors get camera cuts, no parallax or particle movement, and immediate interface transitions. An explicit **Explore without 3D** option, automatic WebGL fallback, keyboard controls, focus-trapped chapter menu, sound toggle, and no-JavaScript chapter text keep the story accessible.
 
 ## Customize
 

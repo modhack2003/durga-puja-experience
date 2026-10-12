@@ -60,27 +60,29 @@ export const chapters = [
     context: [
       'Navami is the last full day of worship before the farewell of Dashami. Homa is part of the ritual observance; aarati and the sounds of dhak fill the puja space.',
       'The festival is also lived through meeting neighbours, sharing food, and returning once more to the pandal. The remaining hours feel especially dear.',
-      'Here, the circle of drums and the warm lamps surround Ma and her children. The celebration stays joyful, with the tenderness of knowing that the visit is drawing to a close.',
+      'Here, dhakis perform before Ma and her children, with shoulder-slung drums, slender sticks, gamchas, and white dhotis. Spectators gather around the lamp-lit, garlanded pandal: the rhythm belongs to people, not just instruments.',
     ],
     rituals: ['Navami worship and homa', 'Aarati and dhak', 'Shared bhog and community'],
     sources: [
       { title: 'Belur Math · Navami observance', url: 'https://media.belurmath.org/tag/navami/' },
       { title: 'Incredible India · Bengal’s festival', url: 'https://www.incredibleindia.gov.in/en/festivals-and-events/west-bengal/durga-puja' },
+      { title: 'Dhaki photographs · the performers behind the rhythm', url: 'https://lifeisavacation.in/2013/10/23/dhaki-bengal-durga-puja/' },
     ],
   },
   {
     name: 'Dashami', bengali: 'বিজয়া দশমী', ritual: 'Until next year', title: ['COME HOME', 'AGAIN, MA.'],
     description: 'We bid our daughter farewell with affection, not distance. The clay returns to the river, and the promise stays with us: আসছে বছর আবার হবে—next year, we will welcome her again.',
-    place: 'THE GHATS', time: 'BIJOYA AND FAREWELL', color: '#e6a574', audio: '/audio/06-bijoya.mp3', frequency: 164.81,
+    place: 'THE GHATS', time: 'BHASAN AND BIJOYA', color: '#e6a574', audio: '/audio/06-bijoya.mp3', frequency: 164.81,
     context: [
       'The farewell is intimate: Uma’s visit to her parents’ home is ending. In many traditions, Devi baran and sindur khela accompany the leave-taking; customs vary between households and communities.',
-      'The pratima is taken for immersion. The clay returns to the water, while Bijoya carries greetings, embraces, sweets, and renewed bonds into the days that follow.',
+      'At bhasan, people gather at the ghat to see Ma off. Attendants support and guide the pratima toward the river; families watch from the steps, and boats move across the broad water. Bijoya carries greetings, embraces, sweets, and renewed bonds into the days that follow.',
       'The homecoming continues in memory. “আসছে বছর আবার হবে”—we will gather again next year—is a promise of return, made with love.',
     ],
     rituals: ['Devi baran · farewell', 'Visarjan · immersion', 'Bijoya greetings'],
     sources: [
       { title: 'আনন্দবাজার · ঘরের মেয়েকে বিদায়', url: 'https://www.anandabazar.com/video/sovabajar-rajbari-prepares-for-idol-immersion-on-dashami-of-durga-puja-2023-dgtl/cid/1469382' },
       { title: 'UNESCO · Clay, craft and homecoming', url: 'https://ich.unesco.org/en/RL/durga-puja-in-kolkata-00703' },
+      { title: 'আনন্দবাজার · বিসর্জনের ঘাটে মানুষ ও প্রতিমা', url: 'https://www.anandabazar.com/amp/west-bengal/durga-puja-2022-idol-immersion-begins-as-durga-puja-comes-to-an-end-dgtl-photogallery/cid/1374827' },
     ],
   },
 ]

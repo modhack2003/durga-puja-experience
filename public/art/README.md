@@ -39,3 +39,25 @@ Visual references reviewed (used for research, not copied into the website):
 - Sovabazar's boat-based immersion arrangements: https://commons.wikimedia.org/wiki/File:Sovabazar_Royal_Durga_Idol_Immersion_Arrangement_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9211.jpg
 - Dhakis and their instruments, a photographic account: https://lifeisavacation.in/2013/10/23/dhaki-bengal-durga-puja/
 - Bengali pandal and drummer coverage: https://www.anandabazar.com/ananda-utsav/puja-parikrama/durga-puja-2022-ballygunge-cultural-association-celebrates-durga-pujo-dgtl/cid/1374513
+
+## Six-scene realism revision (13 October 2026)
+
+All six environment plates are original generated artwork, inspired by research rather than copied photographs. People within these plates are still imagery. Water-only shimmer, light shafts, framing movement and directional dissolves are implemented in FestivalBackdrop.jsx; instanced petals and existing devotional/musician layers provide depth. Reduced motion freezes these effects. The old geometric crowd, riverbank and plant constructions were removed.
+
+Generation briefs:
+- bengal-dawn.webp: photorealistic Hooghly dawn ghat, distant priests, brass vessels, boats, kash grass and shiuli, empty foreground for the Mahishasura Mardini stage.
+- thakur-dalan.webp: North Kolkata bonedi-bari courtyard at blue hour, weathered cream/vermilion arches, green shutters, iron balconies, chandeliers, marigolds, alpona, devotees at edges, empty shrine for compositing.
+- saptami-ghat.webp: Nabapatrika snan with a banana plant and eight associated plants in a red-bordered white sari, priest and helpers, vessels and flowers, ordinary devotees at the ghat, natural river and dawn light.
+- ashtami-anjali.webp: daylight thakur dalan with small groups cupping flowers for pushpanjali, hibiscus and bel leaves, lamps and incense, empty right altar for the family artwork.
+- navami-pandal.webp: evening bamboo and terracotta community pandal, chandeliers, marigolds, alpona, families at the sides, incense and an empty performance area for the existing dhakis.
+- bhasan-farewell.webp: one coherent Hooghly farewell composition, serene Bengali ekchala pratima in red sari and white shola ornament with all four children, natural human bearers supporting a bamboo frame, ghat spectators and water reflections. No floating detached idol or distorted sacred faces.
+
+Composition constraints: landscape 1536x1024, no words/logos/watermarks, photographic lighting and natural scale, compassionate Bengali devotional character. Phone Saptami and Bhasan show the tableau above a dark reading area rather than cropping it to fill a narrow screen.
+
+Additional visual research:
+- https://ich.unesco.org/en/8b-representative-list-01191?call=slideshow&id=00703&include=slideshow_inc.php&mode=scroll&width=620
+- https://www.outlooktraveller.com/experiences/heritage/check-out-these-iconic-bonedi-bari-durga-pujas-in-kolkata
+- https://commons.wikimedia.org/wiki/File:Sovabazar_Royal_Durga_Idol_Immersion_Arrangement_-_River_Hooghly_-_Baghbazar_Ghat_-_Kolkata_2014-10-03_9211.jpg
+- https://www.outlookindia.com/national/in-photos-the-spirit-of-durga-puja-captured-in-the-immersion-ceremony
+
+Validation: production export and all six image dimensions/assets passed. Original images inspected visually. Final browser review of this revision remains pending because local preview access was blocked by the browser tool security policy.

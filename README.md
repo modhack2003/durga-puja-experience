@@ -23,11 +23,11 @@ The generated `out/` directory can be served by any static host. `next start` is
 ## Experience
 
 - **Mahalaya:** a dawn Mahishasura Mardini tableau, paying tribute to the beloved Bengali morning programme.
-- **Shashti:** a layered illuminated pandal corridor with a forward camera journey.
-- **Saptami:** Nabapatrika snan, with nine plant forms and the red-bordered white sari at the riverbank.
-- **Ashtami:** the complete Bengali family pratima, lamp offerings and anjali context.
-- **Navami:** three lifelike dhakis performing before the family altar, small animated drummers and spectators, marigold garlands and a decorated floor.
-- **Dashami:** a photorealistic Hooghly-inspired river ghat, subtle moving ripples, boats, ghat spectators and small attendants carrying the pratima on a supported platform.
+- **Shashti:** a weathered bonedi-bari courtyard with chandeliers, green shutters, alpona and the family pratima.
+- **Saptami:** a detailed Nabapatrika snan tableau with priests, plant bundle, brass vessels and bathing devotees at the ghat.
+- **Ashtami:** a daylight pushpanjali courtyard with flower offerings, devotees and the complete Bengali family pratima.
+- **Navami:** lifelike dhakis before the family altar in a bamboo-and-terracotta pandal with families and incense.
+- **Dashami:** a cohesive river farewell with a peaceful Bengali pratima, its complete family, bearers, spectators and natural water reflections.
 
 The fullscreen entry, restrained typography, scene overlays and scroll choreography take inspiration from [Edolus](https://edolus.com/). The devotional artwork, geometry, narrative, palette and synthesized sound in this project are original; no Edolus assets or source code are included. Ma and her children are shown in original devotional artwork inside the 3D worlds. The old geometric figure has been removed; the artwork preserves a traditional Bengali painted-pratima appearance and is not a volumetric scan. See `public/art/README.md` for the art briefs and cultural sources.
 
@@ -44,7 +44,7 @@ The fullscreen entry, restrained typography, scene overlays and scroll choreogra
 | Motion | Entry, chapter and navigation transitions |
 | Lucide React | Accessible interface icons |
 
-The heavier 3D component is dynamically loaded. Original generated WebP environment and musician artwork adds photographic detail; custom shaders animate the water, and small 3D people and boats provide scale and motion. Only the current and next worlds are rendered. Mobile devices use reduced resolution and skip postprocessing. Reduced-motion visitors get camera cuts, no parallax or particle movement, and immediate interface transitions. An explicit **Explore without 3D** option, automatic WebGL fallback, keyboard controls, focus-trapped chapter menu, sound toggle, and no-JavaScript chapter text keep the story accessible.
+The heavier 3D component is dynamically loaded. Six original generated WebP environment plates add photographic detail, with devotional and musician layers in the 3D scenes. Custom shaders add restrained water shimmer, drifting light shafts, slow framing changes and directional chapter dissolves. Instanced petals add depth. Faces remain undistorted. These are animated photographic-style compositions, not fully animated documentary footage. Only the current and next worlds are rendered. Mobile devices use reduced resolution and skip postprocessing. Reduced-motion visitors get camera cuts, frozen ambient effects and immediate interface transitions. An explicit **Explore without 3D** option, automatic WebGL fallback, keyboard controls, focus-trapped chapter menu, sound toggle, and no-JavaScript chapter text keep the story accessible.
 
 ## Customize
 
@@ -58,6 +58,8 @@ The font stylesheet uses Google Fonts with local fallbacks. The sound is a brows
 ## Validation
 
 The migration was checked with a production build and browser inspection of entry, chapter navigation, replay, the sound toggle, menu dismissal and responsive layouts. Full performance across real mobile hardware remains device-dependent.
+
+The latest six-background realism revision passes the production build and exported-asset checks. Source images were visually inspected. Final in-browser visual verification remains pending because browser access to the local preview was blocked by the browser tool's security policy.
 
 ## Cultural context
 

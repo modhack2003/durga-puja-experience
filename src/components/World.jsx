@@ -5,12 +5,29 @@ import { Sparkles, AdaptiveDpr, useTexture } from '@react-three/drei'
 import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing'
 import * as THREE from 'three'
 import { CHAPTER_COUNT } from './chapters'
-import { ImmersionScene, NaturalWater, DhakiPerformance, DhakDrummer, SmallPerson, FestivalDecor } from './EnvironmentScenes'
+import { DhakiPerformance } from './EnvironmentScenes'
+import FestivalBackdrop from './FestivalBackdrop'
 
-const GOLD = '#bf8b43'
-const material = { color: GOLD, metalness: 0.72, roughness: 0.32 }
 const smooth = (x) => x * x * (3 - 2 * x)
 const mix = THREE.MathUtils.lerp
+
+function OfferingPetals({ reduced, low }) {
+  const petals=useRef()
+  const transform=useMemo(()=>new THREE.Object3D(),[])
+  const count=low?14:32
+  useFrame(({clock})=>{
+    const t=reduced?0:clock.elapsedTime
+    for(let i=0;i<count;i++){
+      const seed=i*2.39996
+      transform.position.set(3+Math.sin(seed)*5+Math.sin(t*.18+seed)*.22,3.8-((i*.37+t*.16)%6.2),Math.cos(seed)*3)
+      transform.rotation.set(seed+t*.28,seed*.7,Math.sin(t*.35+seed))
+      transform.scale.set(.028,.065,.012)
+      transform.updateMatrix();petals.current.setMatrixAt(i,transform.matrix)
+    }
+    petals.current.instanceMatrix.needsUpdate=true
+  })
+  return <instancedMesh ref={petals} args={[undefined,undefined,count]} frustumCulled={false}><sphereGeometry args={[1,6,4]}/><meshStandardMaterial color="#dc7b36" roughness={.85}/></instancedMesh>
+}
 
 // The sacred figures use original devotional artwork on planes inside the 3D world.
 // Keeping the painted face intact avoids distorting Bengali pratima iconography.
@@ -59,78 +76,17 @@ function Lamp({ position, scale = 1 }) {
   </group>
 }
 
-function Portal({ z, index }) {
-  return <group position={[0, 0, z]}>
-    <mesh position={[0, 1, 0]}><torusGeometry args={[3.1, 0.12, 10, 64, Math.PI]} /><meshStandardMaterial color={index % 2 ? '#834b32' : GOLD} metalness={0.45} roughness={0.55} /></mesh>
-    {[-1, 1].map(side => <group key={side} position={[side * 3.1, -0.8, 0]}>
-      <mesh><cylinderGeometry args={[0.11, 0.18, 3.6, 12]} /><meshStandardMaterial {...material} /></mesh>
-      <mesh position={[0, -1.8, 0]}><boxGeometry args={[0.5, 0.3, 0.5]} /><meshStandardMaterial color="#5c3025" /></mesh>
-      <Lamp position={[0, 0.2, 0.3]} scale={1.4} />
-    </group>)}
-    {Array.from({ length: 19 }, (_, i) => { const a = i / 18 * Math.PI; return <mesh key={i} position={[Math.cos(a) * 3.1, Math.sin(a) * 3.1 + 1, 0.1]}><sphereGeometry args={[0.06, 10, 10]} /><meshBasicMaterial color={[2.5, 1.2, 0.25]} toneMapped={false} /></mesh> })}
-  </group>
-}
-
 function Pandal() {
   return <group>
-    {Array.from({ length: 8 }, (_, i) => <Portal key={i} z={-i * 2.5} index={i} />)}
-    <mesh position={[0, -2.8, -8]} rotation={[-Math.PI / 2, 0, 0]}><planeGeometry args={[6.8, 26]} /><meshStandardMaterial color="#33191b" metalness={0.55} roughness={0.35} /></mesh>
-    {[-1, 1].map(side => Array.from({ length: 14 }, (_, i) => <Lamp key={`${side}-${i}`} position={[side * 2.7, -2.65, -i * 1.3]} />))}
-    <SacredTableau position={[0, -0.15, -18]} width={5.8} />
+    <SacredTableau position={[1.2, -.2, -10]} width={7.2}/>
+    {Array.from({length:10},(_,i)=><Lamp key={i} position={[i*.65-1.7,-2.7,-8.8]} scale={.65}/>)}
   </group>
 }
-
-function River({ reduced, saptami = false, journey }) {
-  if (!saptami) return <ImmersionScene reduced={reduced} journey={journey}>
-    <SacredTableau position={[0, -0.75, 0]} width={3.8} />
-  </ImmersionScene>
+function Pulse({reduced}) {
   return <group>
-    <NaturalWater reduced={reduced} />
-    {[-1, 1].map(side => <group key={side} position={[side * 8, -2.25, -4]}><mesh><boxGeometry args={[4, 0.4, 22]} /><meshStandardMaterial color="#3e302b" roughness={0.85} /></mesh>{Array.from({ length: 8 }, (_, i) => <mesh key={i} position={[0, i * -0.13, 10 + i * 0.35]}><boxGeometry args={[4, 0.2, 0.6]} /><meshStandardMaterial color="#514238" /></mesh>)}</group>)}
-  </group>
-}
-function Saptami({ reduced }) {
-  const leaf = useMemo(() => {
-    const shape = new THREE.Shape()
-    shape.moveTo(0, 0)
-    shape.bezierCurveTo(-0.8, 0.5, -0.9, 1.8, 0, 2.3)
-    shape.bezierCurveTo(0.8, 1.5, 0.6, 0.5, 0, 0)
-    return shape
-  }, [])
-  return <group>
-    <River reduced={reduced} saptami />
-    <group position={[2.6, -0.1, 0]}>
-      <mesh position={[0, -1.55, 0]}><cylinderGeometry args={[0.9, 1.25, 0.22, 48]} /><meshStandardMaterial color="#3c2d21" /></mesh>
-      <mesh position={[0, -0.65, 0]}><cylinderGeometry args={[0.27, 0.67, 1.6, 48]} /><meshStandardMaterial color="#f2e4ca" roughness={0.9} /></mesh>
-      <mesh position={[0, -1.35, 0]}><cylinderGeometry args={[0.64, 0.69, 0.2, 48]} /><meshStandardMaterial color="#a52b2f" roughness={0.7} /></mesh>
-      <mesh position={[0, -0.1, 0]} rotation={[0, 0, -0.18]}><cylinderGeometry args={[0.035, 0.035, 1.7, 12]} /><meshStandardMaterial color="#28682b" /></mesh>
-      {Array.from({ length: 9 }, (_, i) => <group key={i} position={[0, 0.1 + (i % 3) * 0.15, 0]} rotation={[0.08, i / 9 * Math.PI * 2, (i % 2 ? 1 : -1) * (0.25 + (i % 3) * 0.28)]} scale={i < 3 ? 1 : 0.65}>
-        <mesh><shapeGeometry args={[leaf]} /><meshStandardMaterial color={i % 2 ? '#598448' : '#3b7135'} roughness={0.9} side={THREE.DoubleSide} /></mesh>
-        <mesh position={[0, 1, 0.005]}><cylinderGeometry args={[0.008, 0.008, 2, 6]} /><meshStandardMaterial color="#a9b875" /></mesh>
-      </group>)}
-      {Array.from({length:10}, (_,i) => <mesh key={i} position={[Math.cos(i)*0.75,-1.38,Math.sin(i)*0.75]}><sphereGeometry args={[0.08,12,10]} /><meshStandardMaterial color={i%2?'#b92234':'#edb143'} /></mesh>)}
-      <Lamp position={[-1.1,-1.4,0.5]} />
-      <Lamp position={[1.1,-1.4,0.5]} />
-    </group>
-  </group>
-}
-
-function Pulse({ reduced }) {
-  return <group>
-    <SacredTableau position={[2.9, 0, -4.5]} width={7.5} />
-    <DhakiPerformance reduced={reduced} />
-    <FestivalDecor />
-    <DhakDrummer position={[-0.25,-2.6,-0.4]} index={0} reduced={reduced}/>
-    <DhakDrummer position={[6.1,-2.6,-1.5]} index={4} reduced={reduced}/>
-    {Array.from({length:9},(_,i)=><SmallPerson key={i} position={[i%2?-1.4:7.2,-2.6,-2-Math.floor(i/2)*.75]} scale={.43} index={i+1} reduced={reduced} pose={i===3?'wave':'watch'}/>)}
-    {[-1,1].map(side=>Array.from({length:3},(_,i)=><group key={`${side}-${i}`} position={[side*4.5+2,-.4,-4-i*2.5]}>
-      <mesh><cylinderGeometry args={[.13,.2,4.4,12]}/><meshStandardMaterial color="#6b3226" roughness={.7} metalness={.25}/></mesh>
-      <mesh position={[0,1.6,0]}><torusGeometry args={[.22,.04,8,20]}/><meshStandardMaterial {...material}/></mesh>
-      <Lamp position={[0,-1.8,.35]} scale={1.2}/>
-    </group>))}
-    <Sparkles count={55} scale={[14, 6, 10]} size={1.8} speed={reduced ? 0 : 0.2} color="#e7b587" opacity={0.3} />
-    <mesh position={[0, -2.65, -2]} rotation={[-Math.PI / 2, 0, 0]}><circleGeometry args={[10, 64]} /><meshStandardMaterial color="#281d20" roughness={0.8} metalness={0.15} /></mesh>
-    <mesh position={[2.9,-2.65,-4.5]}><boxGeometry args={[8,.18,3]}/><meshStandardMaterial color="#592e2c" roughness={.8}/></mesh>
+    <SacredTableau position={[2.9,0,-4.5]} width={7.5}/>
+    <DhakiPerformance reduced={reduced}/>
+    {[-1,1].map(side=><Lamp key={side} position={[2.9+side*3.5,-2.55,-1]} scale={1.2}/>)}
   </group>
 }
 const stops = [
@@ -182,6 +138,7 @@ function Scene({ journey, reduced, entered, onReady, low }) {
   useEffect(() => { onReady() }, [onReady])
   return <>
     <color attach="background" args={['#08080b']} />
+    <FestivalBackdrop journey={journey} reduced={reduced} />
     <fog attach="fog" args={['#08080b', 13, 29]} />
     <ambientLight intensity={0.45} color="#b9b4cb" />
     <directionalLight position={[5, 8, 5]} intensity={3.2} color="#ffc887" />
@@ -189,13 +146,14 @@ function Scene({ journey, reduced, entered, onReady, low }) {
     {Array.from({length: CHAPTER_COUNT}, (_,i) => -i * 28).map((z, i) => <group key={z} ref={node => { worlds.current[i] = node }} position={[0, 0, z]}>
       <pointLight position={[2, 2, 4]} intensity={35} distance={18} color={i === 4 ? '#ed6332' : '#f4bd76'} />
       <pointLight position={[-4, 0, -3]} intensity={15} distance={16} color="#966346" />
-      {i !== 5 && <Sparkles count={low ? 45 : 110} scale={[18, 11, 16]} position={[0, 0, -2]} size={2} speed={reduced ? 0 : 0.18} color="#dca973" opacity={0.5} />}
+      {i !== 5 && i !== 2 && <Sparkles count={low ? 45 : 110} scale={[18, 11, 16]} position={[0, 0, -2]} size={2} speed={reduced ? 0 : 0.18} color="#dca973" opacity={0.5} />}
+      {(i===0||i===3||i===4)&&<OfferingPetals reduced={reduced} low={low}/>}
       {i === 0 && <Mahalaya journey={journey} reduced={reduced} entered={entered} />}
       {i === 1 && <Pandal />}
-      {i === 2 && <Saptami reduced={reduced} />}
+
       {i === 3 && <group><SacredTableau position={[3.1, 0.3, 0]} width={8.3} />{Array.from({ length: 24 }, (_, n) => <Lamp key={n} position={[Math.sin(n * 2.4) * 4.7, -2.75, Math.cos(n * 2.4) * 2]} />)}<mesh position={[3.1, -2.7, 0]}><boxGeometry args={[8, 0.35, 3]} /><meshStandardMaterial color="#381b20" metalness={0.4} roughness={0.35} /></mesh></group>}
       {i === 4 && <Pulse reduced={reduced} />}
-      {i === 5 && <River reduced={reduced} journey={journey} />}
+
     </group>)}
     {!low && <EffectComposer multisampling={0}><Bloom luminanceThreshold={1} intensity={0.65} mipmapBlur /><Vignette offset={0.15} darkness={0.65} /></EffectComposer>}
     <CameraRig journey={journey} reduced={reduced} entered={entered} />

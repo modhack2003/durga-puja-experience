@@ -1,13 +1,14 @@
-# Local chapter audio
+# Optional chapter recordings
 
-The experience has no visible music player. Audio begins from the **Enter the experience** gesture and follows the scroll chapter automatically.
+The experience ships an original browser-generated ambient score. Sound starts from the Begin the journey gesture and can be muted in the header. The Mahalaya scene is an original visual tribute to Mahishasura Mardini, not a replay of broadcast audio or footage.
 
-Drop local files here with these names if you want to audition your own Durga Puja songs or recordings:
+To use your own recordings, add these files:
 
-- `01-agomoni.mp3` — Mahalaya / Agomoni
-- `02-pandal.mp3` — Shasthi / arrival
-- `03-dhak.mp3` — Ashtami / dhak pulse
-- `04-sindoor.mp3` — Navami / celebration
-- `05-bijoya.mp3` — Dashami / farewell
+- `01-agomoni.mp3` — Mahalaya
+- `02-pandal.mp3` — Shashti
+- `03-saptami.mp3` — Saptami
+- `04-anjali.mp3` — Ashtami
+- `05-dhak.mp3` — Navami
+- `06-bijoya.mp3` — Dashami
 
-The repository intentionally does not ship copyrighted recordings. Until local tracks are added, the app runs a quiet browser-generated tonal bed so the visual experience still works immediately.
+Set `NEXT_PUBLIC_USE_CHAPTER_AUDIO=true` in `.env.local` before starting or building. Without that flag no recording requests are made. The ambient score remains available if an optional recording cannot play.

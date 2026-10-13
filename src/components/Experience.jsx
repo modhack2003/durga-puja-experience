@@ -27,12 +27,14 @@ export default function Experience() {
   const [story, setStory] = useState(false)
   const [muted, setMuted] = useState(false)
   const [flat, setFlat] = useState(false)
+  const [launching, setLaunching] = useState(false)
   const reduced = useReducedMotion()
   const journey = useRef({ value: 0 })
   const track = useRef(null)
   const progress = useRef(null)
   const lenis = useRef(null)
   const contextCleanup = useRef(null)
+  const entryTimer = useRef(null)
   const chapterRef = useRef(0)
   const menuButton = useRef(null)
   const menuPanel = useRef(null)
@@ -81,6 +83,10 @@ export default function Experience() {
     return () => { document.body.style.overflow = '' }
   }, [entered, menu, story])
 
+  useEffect(() => () => {
+    if (entryTimer.current) window.clearTimeout(entryTimer.current)
+  }, [])
+
   useEffect(() => {
     if (!menu && !story) return
     const items = menuPanel.current?.querySelectorAll('button, a')
@@ -107,19 +113,27 @@ export default function Experience() {
     menuButton.current?.focus({ preventScroll: true })
   }
   const enter = () => {
+    if (launching) return
     start()
     window.scrollTo(0, 0)
     setEntered(true)
+    setLaunching(true)
+    if (entryTimer.current) window.clearTimeout(entryTimer.current)
+    entryTimer.current = window.setTimeout(() => {
+      setLaunching(false)
+      entryTimer.current = null
+    }, reduced ? 0 : 1100)
     menuButton.current?.focus({ preventScroll: true })
   }
   const current = chapters[chapter]
   const transition = { duration: reduced ? 0 : 0.7, ease: [0.22, 1, 0.36, 1] }
 
-  return <main className={`experience ${entered ? 'is-entered' : ''} ${flat ? 'flat-mode' : ''}`} style={{ '--accent': current.color }}>
+  return <main className={`experience ${entered ? 'is-entered' : ''} ${launching ? 'is-launching' : ''} ${flat ? 'flat-mode' : ''}`} style={{ '--accent': current.color }}>
     <a className="skip-link" href="#chapter-content" onClick={() => { if (!entered) enter() }}>Skip to story</a>
     <div className="world" aria-hidden="true">{!flat && <WorldBoundary onFallback={onFallback}><World journey={journey} reduced={!!reduced} entered={entered} onReady={onReady} onFallback={onFallback} /></WorldBoundary>}</div>
     <div className="world-shade" aria-hidden="true" />
     <div className="grain" aria-hidden="true" />
+    {launching && <div className="entry-curtain" aria-hidden="true"><span className="entry-curtain-top" /><span className="entry-curtain-bottom" /></div>}
 
     <header className="header">
       <button ref={menuButton} className="header-control menu-button" onClick={() => setMenu(!menu)} aria-label="Open chapter navigation" aria-expanded={menu} disabled={!entered}><Menu size={17} /><span>EXPLORE</span></button>
@@ -132,7 +146,7 @@ export default function Experience() {
         <div className="intro-eyebrow"><span /> AN IMMERSIVE HOMECOMING <span /></div>
         <h1><span>THE GODDESS</span><span>RETURNS.</span></h1>
         <p>UMA COMES HOME WITH HER CHILDREN.<br className="mobile-only" /> SIX CHAPTERS. ONE CITY. A THOUSAND STORIES.</p>
-        <button className="enter-button" onClick={enter} disabled={!ready}><span>{ready ? 'BEGIN THE JOURNEY' : 'PREPARING THE WORLD'}</span>{ready ? <ArrowUpRight size={17} /> : <i className="loading-dot" />}<i className="corner c1" /><i className="corner c2" /><i className="corner c3" /><i className="corner c4" /></button>
+        <button className="enter-button" onClick={enter} disabled={!ready}><span>{ready ? 'ENTER THE EXPERIENCE' : 'PREPARING THE WORLD'}</span>{ready ? <ArrowUpRight size={17} /> : <i className="loading-dot" />}<i className="corner c1" /><i className="corner c2" /><i className="corner c3" /><i className="corner c4" /></button>
         <button className="text-entry" onClick={() => { setFlat(true); setReady(true); enter() }}>Explore without 3D</button>
         <div className="headphone-note"><Headphones size={25} strokeWidth={1} /><span>BEST EXPERIENCED WITH HEADPHONES</span></div>
         <div className="intro-footer"><span>KOLKATA, WEST BENGAL</span><span>দুর্গোৎসব · A CELEBRATION OF HOMECOMING</span><span>SCROLL TO DISCOVER</span></div>

@@ -61,3 +61,9 @@ Additional visual research:
 - https://www.outlookindia.com/national/in-photos-the-spirit-of-durga-puja-captured-in-the-immersion-ceremony
 
 Validation: production export and all six image dimensions/assets passed. Original images inspected visually. Final browser review of this revision remains pending because local preview access was blocked by the browser tool security policy.
+
+## Living homecoming redesign
+
+The original artwork is preserved. The opening adds an original SVG alpona-inspired ornament and architectural framing. The journey renderer now layers the same images with lathed brass bells and lamps, instanced petals, a noise-based incense shader, localized river ripples, a synchronized dissolve and restrained dolly motion. Faces are not warped. Source people remain still artwork.
+
+The new light mode uses each chapter's own background and devotional layers. Mobile framing preserves the full tableau above the reading area. See the current README and RESEARCH.md for the latest implementation and reproducible browser verification commands; the verification notes above describe earlier revisions.

@@ -1,6 +1,6 @@
 # Optional chapter recordings
 
-The experience ships an original browser-generated ambient score. Sound starts from the Begin the journey gesture and can be muted in the header. The Mahalaya scene is an original visual tribute to Mahishasura Mardini, not a replay of broadcast audio or footage.
+The experience ships an original browser-generated ambient score. Sound is off by default. Enable it in the header, or use the explicit bell or drum interaction; it can be muted again in the header. The Mahalaya scene is an original visual tribute to Mahishasura Mardini, not a replay of broadcast audio or footage.
 
 To use your own recordings, add these files:
 

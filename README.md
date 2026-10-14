@@ -1,6 +1,8 @@
 # The Goddess Returns
 
-A Next.js 16 / React 19 cinematic journey through Durga Puja. Six cinematic worlds celebrate the festival's artisans, pandals, collective prayer, dhak rhythms, and river farewell.
+An interactive Durga Puja homecoming, built with Next.js, React Three Fiber and GSAP. Six chapters carry visitors from the first calling of Mahalaya to the river farewell of Dashami, preserving the original Bengali narrative and devotional artwork.
+
+![The new opening](docs/previews/homecoming-desktop.webp)
 
 ## Run
 
@@ -11,60 +13,70 @@ npm ci
 npm run dev
 ```
 
-Open http://localhost:3000. For a deployable static build:
+Open http://localhost:3000. For the production export:
 
 ```sh
 npm run build
 npm run preview
 ```
 
-The generated `out/` directory can be served by any static host. `next start` is not used because this project exports a static website.
+Deploy the generated `out/` directory to any static host. This project does not use `next start`.
 
-## Experience
+## The experience
 
-- **Mahalaya:** a dawn Mahishasura Mardini tableau, paying tribute to the beloved Bengali morning programme.
-- **Shashti:** a weathered bonedi-bari courtyard with chandeliers, green shutters, alpona and the family pratima.
-- **Saptami:** a detailed Nabapatrika snan tableau with priests, plant bundle, brass vessels and bathing devotees at the ghat.
-- **Ashtami:** a daylight pushpanjali courtyard with flower offerings, devotees and the complete Bengali family pratima.
-- **Navami:** lifelike dhakis before the family altar in a bamboo-and-terracotta pandal with families and incense.
-- **Dashami:** a cohesive river farewell with a peaceful Bengali pratima, its complete family, bearers, spectators and natural water reflections.
+- A lamp-lit opening with a full family tableau, original alpona-inspired ornament, pointer parallax and locally hosted English/Bengali fonts.
+- Six scroll-directed scenes with layered artwork, WebGL incense, instanced petals, river shimmer and organic scene dissolves.
+- Real brass bell and lamp geometry, with a responsive bell gesture and warm light.
+- A chapter atlas, image previews, keyboard controls, a scrubbable timeline and optional film playback.
+- A different interaction in every chapter: bell, light, water, flowers, percussion and river lamps.
+- Detailed Story & Rituals panels retaining the original context and sources.
+- Responsive phone compositions, explicit motion controls, system reduced-motion support, and complete light/no-JavaScript fallbacks.
 
-The fullscreen entry, restrained typography, scene overlays and scroll choreography take inspiration from [Edolus](https://edolus.com/). The devotional artwork, geometry, narrative, palette and synthesized sound in this project are original; no Edolus assets or source code are included. Ma and her children are shown in original devotional artwork inside the 3D worlds. The old geometric figure has been removed; the artwork preserves a traditional Bengali painted-pratima appearance and is not a volumetric scan. See `public/art/README.md` for the art briefs and cultural sources.
+Sound is off initially. Enable it in the header or use the bell/drum controls. The original synthesized ambience and percussion are artistic interpretations, not field recordings. Optional user-supplied recordings remain supported; see [audio setup](public/audio/README.md).
 
-## Libraries and responsibilities
+The sacred figures and people remain photographic-style artwork. This is a layered animated experience, not live-action video or a volumetric idol scan. Read the [art documentation](public/art/README.md) and [design research](RESEARCH.md).
 
-| Library | Purpose |
+## Controls
+
+| Action | Control |
 | --- | --- |
-| Next.js App Router | Routing, metadata, client code splitting and static export |
-| React Three Fiber + Three.js | Scene composition and camera rendering |
-| Drei | Art textures, particles and adaptive resolution |
-| React Three Postprocessing | Bloom and vignette on desktop |
-| GSAP + ScrollTrigger | Scroll progress and camera choreography |
-| Lenis | Smooth scrolling and chapter jumps |
-| Motion | Entry, chapter and navigation transitions |
-| Lucide React | Accessible interface icons |
+| Travel through the chapters | Scroll, swipe or drag the timeline |
+| Jump to a chapter | Bottom navigation or The Chapters atlas |
+| Previous / next chapter | Arrow buttons, or left/right keys outside controls |
+| Play the journey | Play Journey; wheel or touch pauses playback |
+| Read the cultural context | The Story & Rituals |
+| Close a panel | Close button or Escape |
+| Quiet the visuals | Motion button; device reduced-motion preference is always respected |
+| Look without text | Eye button; Escape restores the story |
+| Explore without WebGL | Explore in light mode on the opening |
 
-The heavier 3D component is dynamically loaded. Six original generated WebP environment plates add photographic detail, with devotional and musician layers in the 3D scenes. Custom shaders add restrained water shimmer, drifting light shafts, slow framing changes and directional chapter dissolves. Instanced petals add depth. Faces remain undistorted. These are animated photographic-style compositions, not fully animated documentary footage. Only the current and next worlds are rendered. Mobile devices use reduced resolution and skip postprocessing. Reduced-motion visitors get camera cuts, frozen ambient effects and immediate interface transitions. An explicit **Explore without 3D** option, automatic WebGL fallback, keyboard controls, focus-trapped chapter menu, sound toggle, and no-JavaScript chapter text keep the story accessible.
+## Verify
+
+```sh
+npm test
+npm run build
+npx playwright install chromium
+npm run test:e2e
+```
+
+For an existing system Chromium installation:
+
+```sh
+PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run test:e2e
+```
+
+The suite covers the real exported app, including all six chapter interactions, sound, reading panels, focus containment, film playback, scrubbing, motion changes, WebGL failure/context loss, phone layouts and no-JavaScript content. Real mobile GPU performance and Safari have not been measured in this environment.
 
 ## Customize
 
-- Edit `src/components/chapters.js` for copy, chapter colors and audio filenames.
-- Edit `src/components/World.jsx` for models, lighting and camera stops.
-- Edit `src/app/globals.css` for layout, typography and responsive behavior.
-- Edit `src/components/Experience.jsx` for navigation and scroll behavior.
+- `src/components/chapters.js`: the original narrative, Bengali headings, rituals and sources.
+- `src/components/journey.js`: visual titles, interaction copy, scene assets and shared timeline math.
+- `src/components/Experience.jsx`: entry, navigation, playback and interaction state.
+- `src/components/ExperienceDialogs.jsx`: chapter atlas and reading panels.
+- `src/components/World.jsx`: layered artwork, petals, incense and river lamps.
+- `src/components/SpatialStage.jsx`: brass geometry and animated lighting.
+- `src/components/FestivalBackdrop.jsx`: image fitting, water and transition shaders.
+- `src/components/useSound.js`: original synthesized score, bell and percussion.
+- `src/app/globals.css`: the visual system and responsive layouts.
 
-The font stylesheet uses Google Fonts with local fallbacks. The sound is a browser-generated ambient score, started only after the entry gesture. Optional local recordings can be enabled as described in `public/audio/README.md`.
-
-## Validation
-
-The migration was checked with a production build and browser inspection of entry, chapter navigation, replay, the sound toggle, menu dismissal and responsive layouts. Full performance across real mobile hardware remains device-dependent.
-
-The latest six-background realism revision passes the production build and exported-asset checks. Source images were visually inspected. Final in-browser visual verification remains pending because browser access to the local preview was blocked by the browser tool's security policy.
-
-## Cultural context
-
-This is an artistic interpretation of the homecoming and farewell of Durga, celebrating shared community and craftsmanship. It does not reproduce a specific artist's idol or claim to document every regional tradition.
-
-Background sources: [UNESCO](https://ich.unesco.org/en/RL/durga-puja-in-kolkata-00703), [Incredible India](https://www.incredibleindia.gov.in/en/festivals-and-events/durga-puja).
-
-Each of the six chapters has a **Story & Rituals** panel with Bengali headings, fuller homecoming and ritual context, and direct reading links. Chapter navigation, camera stops, progress totals and replay derive from the six-chapter sequence.
+The design celebrates shared community and craftsmanship. It does not claim to document every regional tradition or reproduce a specific artist’s idol. Ritual timing and customs vary by community.
